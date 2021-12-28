@@ -58,6 +58,6 @@ export function get_style(progress: number, animate: boolean) {
         ? `translate(${100 / sensitivity}px, 0)`
         : `translate(${(100 + progress) / sensitivity}px, 0)`
     };
-    display: ${progress === 0 ? 'none' : 'initial'};
+    display: ${progress === 0 && !animate ? 'none' : 'initial'};
 }`;
 }
