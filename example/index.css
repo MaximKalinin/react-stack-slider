@@ -1,0 +1,12 @@
+.img {
+  border-radius: 10px;
+  width: 450px;
+  max-width: 100%;
+  object-fit: cover;
+  user-select: none;
+  box-shadow: 0 0 50px rgb(0 0 0 / 50%);
+}
+
+.Slider {
+  margin: auto;
+}
