@@ -36,7 +36,7 @@ export const SliderInner = memo(function SliderInner({
   timeout_callback.current = () => {
     if (progress_ref.current === 100 || progress_ref.current === -100)
       unstable_batchedUpdates(() => {
-        set_current(old => old - 1 * Math.sign(progress_ref.current));
+        set_current(old => old + 1 * Math.sign(progress_ref.current));
         set_progress(0);
       });
   };
@@ -144,7 +144,7 @@ export const SliderInner = memo(function SliderInner({
 
   const elements: ReactNode[] = [];
 
-  for (let index = 0; index < 5; index++) {
+  for (let index = 3; index >= -1; index--) {
     const src = get_item(images, current + index);
     elements.push(<Image key={`${index}${src}`} src={src} />);
   }
