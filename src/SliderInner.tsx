@@ -34,11 +34,14 @@ export const SliderInner = memo(function SliderInner({
   const ref = useRef<HTMLDivElement>(null);
 
   timeout_callback.current = () => {
-    if (progress_ref.current === 100 || progress_ref.current === -100)
-      unstable_batchedUpdates(() => {
+    unstable_batchedUpdates(() => {
+      if (progress_ref.current === 100 || progress_ref.current === -100) {
         set_current(old => old + 1 * Math.sign(progress_ref.current));
         set_progress(0);
-      });
+      }
+
+      set_animate(false);
+    });
   };
 
   useEffect(() => {
@@ -50,8 +53,6 @@ export const SliderInner = memo(function SliderInner({
       const start_position = get_mouse_position(event);
 
       if (!start_position) return;
-
-      set_animate(false);
 
       event.preventDefault();
 
