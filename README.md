@@ -81,12 +81,22 @@ This is TypeScript definition of the `<Slider>` props. It also applies to JavaSc
 import { ElementType } from 'react';
 
 export interface SliderProps {
-  // Component to be rendered by Slider for each image. It can be either a intrisinc react element (such as "img") or function/class component, but it should accept "src" property as Slider will internally pass it on each render.
+  /**
+   * Component to be rendered by Slider for each image. It can be either a intrisinc
+   * react element (such as "img") or function/class component, but it should accept
+   * "src" property as Slider will internally pass it on each render
+   */
   Image: ElementType<{ src: string }>;
-  // Array of image urls to be shown by sliderю
+  /**
+   * Array of image urls to be shown by slider
+   */
   images: string[];
 }
 ```
+
+## Performance Optimization
+
+In order to achieve 60fps in animation it is recommended not to change props while slide is in progress. Internally component uses `Reac.memo` to prevent unnecessarry rerenders.
 
 ## Contributing
 

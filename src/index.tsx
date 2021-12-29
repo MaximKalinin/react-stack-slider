@@ -6,7 +6,15 @@ import { ImageComponent } from './types';
 import { SliderInner } from './SliderInner';
 
 export interface SliderProps {
+  /**
+   * Component to be rendered by Slider for each image. It can be either a intrisinc
+   * react element (such as "img") or function/class component, but it should accept
+   * "src" property as Slider will internally pass it on each render
+   */
   Image: ImageComponent;
+  /**
+   * Array of image urls to be shown by slider
+   */
   images: string[];
 }
 
