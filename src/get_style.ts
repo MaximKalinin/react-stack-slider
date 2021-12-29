@@ -1,14 +1,14 @@
-import { sensitivity, animation_time } from './const';
+import { sensitivity, animation_time, class_name } from './const';
 
 export function get_style(progress: number, animate: boolean) {
   return `
-.Slider {
+.${class_name} {
     display: inline-flex;
     position: relative;
     justify-content: center;
 }
 
-.Slider > * {
+.${class_name} > * {
     position: absolute;
     bottom: -10%;
     transition: ${
@@ -18,30 +18,30 @@ export function get_style(progress: number, animate: boolean) {
     };
 }
 
-.Slider > *:last-child {
+.${class_name} > *:last-child {
     position: static;
     visibility: hidden;
     pointer-events: none;
 }
 
-.Slider > *:nth-child(1) {
+.${class_name} > *:nth-child(1) {
     opacity: ${progress / 100};
     transform: scale(0.8) scale(${0.4 + (0.2 * progress) / 100}) 
     translate(0, -${130 - progress * 0.6}%);
 }
 
-.Slider > *:nth-child(2) {
+.${class_name} > *:nth-child(2) {
     opacity: ${1 + progress / 100};
     transform: scale(0.8) scale(${0.6 + (0.2 * progress) / 100}) 
     translate(0, -${70 - progress * (progress > 0 ? 0.4 : 0.6)}%);
 }
 
-.Slider > *:nth-child(3) {
+.${class_name} > *:nth-child(3) {
     transform: scale(0.8) scale(${0.8 + (0.2 * progress) / 100}) 
     translate(0, -${30 - progress * (progress > 0 ? 0.3 : 0.4)}%);
 }
 
-.Slider > *:nth-child(4) {
+.${class_name} > *:nth-child(4) {
     opacity: ${1 - progress / 100};
     transform: scale(0.8) ${
       progress >= 0
@@ -51,7 +51,7 @@ export function get_style(progress: number, animate: boolean) {
     };
 }
 
-.Slider > *:nth-child(5) {
+.${class_name} > *:nth-child(5) {
     opacity: ${-progress / 100};
     transform: scale(0.8) ${
       progress >= 0

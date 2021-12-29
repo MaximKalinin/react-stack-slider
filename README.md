@@ -78,15 +78,41 @@ This is because `<Slider>` internally renders all the images with `position: abs
 This is TypeScript definition of the `<Slider>` props. It also applies to JavaScript usage:
 
 ```ts
-import { ElementType } from 'react';
+import { ElementType, CSSProperties } from 'react';
 
 export interface SliderProps {
   // Component to be rendered by Slider for each image. It can be either a intrisinc react element (such as "img") or function/class component, but it should accept "src" property as Slider will internally pass it on each render.
   Image: ElementType<{ src: string }>;
   // Array of image urls to be shown by sliderю
   images: string[];
+  // Optional class name to apply to the root <div> element
+  className?: string;
+  // Optional styles to apply to the root <div> element
+  style?: CSSProperties;
 }
 ```
+
+## Styling
+
+Slider component is highly customizable in terms of styling. Initially, you can use `.react-stack-slider` class to target the root `<div>` element. If you want to style images itself, just create a react component with styles and pass it to the `<Slider>`:
+
+```jsx
+function Image({src}) {
+  return <img src={src} className='custom-class-name' alt='alt'>;
+}
+
+<Slider Image={Image} images={images} />
+```
+
+If you want more advanced options, you can pass a `className` property to the `Slider` itself. It will concat your class name with `.react-stack-slider`. You can use `<Slider>` with `styled-components` or similar CSS-in-JS library:
+
+```jsx
+const FancySlider = styled(Slider)`
+  background-color: palevioletred;
+`;
+```
+
+You can also pass `style` object which is the same as React style object. It will be applied to the root `<div>` element.
 
 ## Contributing
 
