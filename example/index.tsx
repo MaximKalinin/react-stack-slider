@@ -19,7 +19,12 @@ function Image({ src }: { src: string }) {
 const App = () => {
   return (
     <div style={{ display: 'flex' }}>
-      <Slider images={images} Image={Image} />
+      <Slider
+        className="hello-world"
+        style={{ margin: 'auto' }}
+        images={images}
+        Image={Image}
+      />
     </div>
   );
 };

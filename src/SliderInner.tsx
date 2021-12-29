@@ -9,13 +9,14 @@ import React, {
   memo,
 } from 'react';
 import { unstable_batchedUpdates } from 'react-dom';
-import { animation_time } from './const';
+import { animation_time, class_name } from './const';
 import { get_item } from './get_item';
 import { IncomingEvent } from './types';
 import { get_mouse_position } from './get_mouse_position';
 import { SliderProps } from './';
 
-interface SliderInnerProps extends Pick<SliderProps, 'Image' | 'images'> {
+interface SliderInnerProps
+  extends Pick<SliderProps, 'Image' | 'images' | 'style' | 'className'> {
   progress_ref: MutableRefObject<number>;
   set_progress: Dispatch<SetStateAction<number>>;
   set_animate: Dispatch<SetStateAction<boolean>>;
@@ -24,6 +25,8 @@ interface SliderInnerProps extends Pick<SliderProps, 'Image' | 'images'> {
 export const SliderInner = memo(function SliderInner({
   Image,
   images,
+  style,
+  className,
   progress_ref,
   set_progress,
   set_animate,
@@ -150,7 +153,7 @@ export const SliderInner = memo(function SliderInner({
   }
 
   return (
-    <div className="Slider" ref={ref}>
+    <div className={`${class_name} ${className || ''}`} style={style} ref={ref}>
       {elements}
       <Image src={images[0]} />
     </div>

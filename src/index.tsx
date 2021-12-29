@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
 import { head } from './const';
 import { get_style } from './get_style';
@@ -8,6 +8,8 @@ import { SliderInner } from './SliderInner';
 export interface SliderProps {
   Image: ImageComponent;
   images: string[];
+  className?: string;
+  style?: CSSProperties;
 }
 
 export function Slider(props: SliderProps) {
